@@ -41,6 +41,7 @@ import Home from "./assets/Components/Home";
 import MainLayOut from "./assets/Components/MainLayOut";
 import PageToRead from "./assets/Components/PageToRead";
 import ListedBooks from "./assets/Components/ListedBooks";
+import BookDetails from "./assets/Components/BookDetails";
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/PagetoRead",
         element: <PageToRead></PageToRead>
+      },
+      {
+        path: "/BookDetails",
+        element: <BookDetails></BookDetails>
       }
     ]
   }
