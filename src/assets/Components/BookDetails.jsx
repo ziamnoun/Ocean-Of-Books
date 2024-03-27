@@ -16,7 +16,7 @@ const BookDetails = () => {
     console.log(singleBookData);
 
     const handleButton=()=>{
-      storeBook(id)
+      storeBook(idInt)
       
 
 
