@@ -7,8 +7,13 @@ const BookDetails = () => {
     const allBook=useLoaderData();
     
     const {id}=useParams();
-    console.log(allBook)
-    console.log(id)
+    const idInt=parseInt(id);
+    const singleBookData=allBook.find(data=>data.bookId===idInt);
+ 
+    console.log(singleBookData);
+
+
+
    
 
 
@@ -77,6 +82,10 @@ const BookDetails = () => {
 };
 
 export default BookDetails;
+
+
+
+
 
 
 
