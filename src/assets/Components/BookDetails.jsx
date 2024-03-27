@@ -1,4 +1,7 @@
 import { useLoaderData,useParams } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { storeBook } from "./utility/localStorage";
 
 
 
@@ -11,6 +14,18 @@ const BookDetails = () => {
     const singleBookData=allBook.find(data=>data.bookId===idInt);
  
     console.log(singleBookData);
+
+    const handleButton=()=>{
+      storeBook(id)
+      
+
+
+      toast.success("Add to Read Books.");
+     
+
+
+
+    }
 
 
 
@@ -72,8 +87,9 @@ const BookDetails = () => {
           </div>
 
           <div className="card-actions flex gap-5 mt-5">
-          <button class="btn btn-outline font-bold">Read</button>
+          <button onClick={handleButton} class="btn btn-outline font-bold">Read</button>
           <button class="btn btn-active btn-accent text-white font-bold">Wish list</button>
+          <ToastContainer />
           </div>
         </div>
       </div>
