@@ -1,12 +1,24 @@
-import React from 'react';
+import { useLoaderData,useParams } from "react-router-dom"
+
+
+
 
 const BookDetails = () => {
+    const allBook=useLoaderData();
+    
+    const {id}=useParams();
+    console.log(allBook)
+    console.log(id)
+   
+
+
     return (
+        
         <div className="card lg:w-[80%] mx-auto mt-10 lg:card-side bg-base-100 shadow-xl">
         <figure className='bg-stone-200 lg:w-[50%] '><img src="public/Images/pngwing 1.png" alt="Album"/></figure>
         <div className="cardBody ml-5">
           <h2 className="card-title text-3xl font-extrabold"> The Catcher in the Rye</h2>
-          <p className='text-xl font-bold border-b-2 border-b-stone-200 border-solid py-2'> By : Awlad Hossain</p>
+          <p className='text-xl font-bold border-b-2 border-b-stone-200 border-solid py-2'> By : skksksks</p>
           <p className='text-xl  border-b-2 border-b-stone-200 border-solid py-2'>Fiction</p>
           <p className='mt-5'>Review : </p>
           <div className="py-5 tags text-lg font-bold flex gap-5 border-b-2 border-b-stone-200 border-solid">
@@ -60,7 +72,15 @@ const BookDetails = () => {
           </div>
         </div>
       </div>
+      
     );
 };
 
 export default BookDetails;
+
+
+
+
+
+
+

@@ -1,32 +1,3 @@
-// // import React from 'react'
-// // import ReactDOM from 'react-dom/client'
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import {
-//   createBrowserRouter,
-//   RouterProvider,
-// } from "react-router-dom";
-// import Navbar from './assets/Components/Navbar.jsx';
-// import Home from './assets/Components/Home.jsx';
-// import MainLayOut from './assets/Components/MainLayOut.jsx';
-
-// const router = createBrowserRouter({
-//   path: "/",
-//   element: <><h1>jsjsjsj</h1></>
-//   // children: [
-//   //   {
-//   //     path: "/",
-//   //     element: <Home />
-//   //   }
-//   // ]
-// });
-
-// ReactDOM.createRoot(document.getElementById("root")).render(
-//   <React.StrictMode>
-//     <RouterProvider router={router} />
-//   </React.StrictMode>
-// );
 
 
 import * as React from "react";
@@ -62,9 +33,13 @@ const router = createBrowserRouter([
         element: <PageToRead></PageToRead>
       },
       {
-        path: "/BookDetails",
-        element: <BookDetails></BookDetails>
+        path:"/BookDetails/:id",
+        element:<BookDetails/>,
+        loader: ()=>fetch("public/fakeDataOfBooks.json"),
+
+
       }
+      
     ]
   }
 ]);

@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
-const BookBuffet = ({books}) => {
+const BookBuffet = ({books,handleBook}) => {
 
-    console.log(books);
+   
 
     return (
-        <div className="card w-96 bg-base-100 shadow-xl mt-10 border-2 border-gray-300 ">
+        <Link to={`/BookDetails/${books.bookId}`} className="card w-96 bg-base-100 shadow-xl mt-10 border-2 border-gray-300 ">
   <div className="bg-gray-100 m-5 rounded-lg"><figure><img src={books.image} alt="Books" /></figure></div>
   <div className="card-body">
     <div className="categoryBooks flex gap-2">
@@ -25,7 +26,7 @@ const BookBuffet = ({books}) => {
       </div>
     </div>
   </div>
-</div>
+</Link>
     );
 };
 

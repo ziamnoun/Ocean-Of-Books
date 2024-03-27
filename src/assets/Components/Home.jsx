@@ -15,7 +15,7 @@ const Home = () => {
             setBooklist(data);
         })
     },[]);
-console.log(booklist)
+
 
 
     return (
