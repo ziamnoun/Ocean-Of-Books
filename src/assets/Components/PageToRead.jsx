@@ -3,9 +3,11 @@ import { useEffect,useState } from 'react';
 import Banner from './Banner';
 import { useLoaderData } from "react-router-dom";
 import { getBooks } from './utility/localStorage';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+
 
 const PageToRead = () => {
-    const[chart,setChart]=useState([])
+    const[chartData,setChartData]=useState([])
     const getAllBooks=useLoaderData();
     useEffect(()=>{
        
@@ -25,7 +27,7 @@ const PageToRead = () => {
             
             }
                     
-        setChart(remainUniqueBook);
+        setChartData(remainUniqueBook);
         }
         
 
@@ -33,15 +35,42 @@ const PageToRead = () => {
     
     ,[])
 
-console.log(chart)
+console.log(chartData)
 
 
 
     return (
-        <div>
-            page to read
-        </div>
+        <div className='lg:w-[80%] m-auto mt-10'>
+        
+        <BarChart
+            width={600}
+            height={400}
+            data={chartData}
+            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="bookName" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="totalPages" fill="#8884d8" shape={<CustomBarShape />} />
+        </BarChart>
+    </div>
     );
 };
+
+const CustomBarShape = (props) => {
+    const { x, y, width, height, fill } = props;
+
+    return (
+        <g>
+            <rect x={x} y={y} width={width} height={height} fill={fill} />
+            
+        </g>
+    );
+};
+
+
+
 
 export default PageToRead;
