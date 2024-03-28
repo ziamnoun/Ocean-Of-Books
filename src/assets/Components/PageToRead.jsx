@@ -36,12 +36,17 @@ const PageToRead = () => {
     ,[])
 
 console.log(chartData)
+const generateRandomColor = () => {
+    const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16); 
+    return randomColor;}
 
 
 
-    return (
-        <div className='lg:w-[80%] m-auto mt-10'>
-        
+
+
+
+return (
+    <div className='lg:w-[80%] m-auto mt-10'>
         <BarChart
             width={600}
             height={400}
@@ -53,22 +58,27 @@ console.log(chartData)
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="totalPages" fill="#8884d8" shape={<CustomBarShape />} />
+            <Bar dataKey="totalPages"  key={`bar-${chartData.bookId}`} fill={generateRandomColor()} shape={<TriangleBar />} label={{ position: 'top' }} />
         </BarChart>
     </div>
-    );
+);
 };
 
-const CustomBarShape = (props) => {
-    const { x, y, width, height, fill } = props;
-
-    return (
-        <g>
-            <rect x={x} y={y} width={width} height={height} fill={fill} />
-            
-        </g>
-    );
+const getPath = (x, y, width, height) => {
+return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
+${x + width / 2}, ${y}
+C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${x + width}, ${y + height}
+Z`;
 };
+
+const TriangleBar = (props) => {
+const { fill, x, y, width, height } = props;
+return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
+};
+
+
+
+
 
 
 
