@@ -7,6 +7,7 @@ import { wishgetBooks } from './utility/wishlistlocalStorage';
 const ListedBooks = () => {
     const[opus,setOpus]=useState([])
     const[wishOpus,setWishOpus]=useState([])
+    const [sortBy, setSortBy] = useState('');
    
     const getAllBooks=useLoaderData();
     console.log(getAllBooks)
@@ -59,7 +60,51 @@ const ListedBooks = () => {
     console.log(wishOpus)
     
 
-console.log(opus)
+// Function to handle sorting option change
+const handleSortByChange = (event) => {
+    const selectedSortBy = event.target.value;
+    setSortBy(selectedSortBy);
+
+    
+    let sortedOpus = [...opus]; 
+
+    switch (selectedSortBy) {
+        case 'rating':
+            sortedOpus.sort((a, b) => b.rating - a.rating); 
+            break;
+        case 'pages':
+            sortedOpus.sort((a, b) => b.totalPages - a.totalPages);
+            break;
+        case 'year':
+            sortedOpus.sort((a, b) => b.yearOfPublishing - a.yearOfPublishing); 
+        default:
+            
+            break;
+    }
+
+    setOpus(sortedOpus);
+
+    
+    let sortedWishOpus = [...wishOpus]; 
+
+    switch (selectedSortBy) {
+        case 'rating':
+            sortedWishOpus.sort((a, b) => b.rating - a.rating); 
+            break;
+            case 'pages':
+                sortedOpus.sort((a, b) => b.totalPages - a.totalPages); 
+                break;
+                case 'year':
+                    sortedWishOpus.sort((a, b) => b.yearOfPublishing - a.yearOfPublishing); 
+                    break;
+                    
+        default:
+           
+            break;
+    }
+
+    setWishOpus(sortedWishOpus);
+};
 
 
 
@@ -68,14 +113,18 @@ console.log(opus)
         <div className="h-20 bg-base-300 text-center align-middle lg:w-[80%] m-auto">
         <p className='text-xl font-bold text-center pt-5'>Books</p>
         </div>
-        <div className="short w-[10%] m-auto ">
-        <select className="select select-info w-full max-w-xs mt-10 bg-green-500 text-white font-bold">
-        <option disabled selected>Short By</option>
-        <option>English</option>
-        <option>Japanese</option>
-        <option>Italian</option>
-        </select>
-        </div>
+        <div className="short w-[10%] m-auto">
+                <select
+                    className="select select-info w-full max-w-xs mt-10 bg-green-500 text-white font-bold"
+                    onChange={handleSortByChange} 
+                    value={sortBy} 
+                >
+                    <option  selected>Short By</option>
+                    <option value="rating">Rating</option>
+                    <option value="pages">Number of pages</option>
+                    <option value="year">Publisher Year</option>
+                </select>
+            </div>
  
 
 
@@ -126,11 +175,10 @@ console.log(opus)
   </div>
 
   <input type="radio" name="my_tabs_2" role="tab" className="tab tabs-lg" aria-label="Whishlist Books" checked />
-  <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
+  <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6 ">
 
 
-  {/* <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-  </div> */}
+
   <div className="ReaList flex-row gap-5 mt-10">
     {
         wishOpus.map(book=>(
