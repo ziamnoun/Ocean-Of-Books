@@ -9,7 +9,7 @@ const Banner = () => {
         <div>
           <div className="hero lg:w-[80%] bg-base-200 min-h-screen bg-no-repeat mx-auto  mt-10 rounded-3xl">
           <div className="hero-content flex-col lg:flex-row-reverse">
-            <img src="public/Images/pngwing_1-removebg-preview.png" className="max-w-sm rounded-lg shadow-2xl" />
+            <img src="/Images/pngwing_1-removebg-preview.png" className="max-w-sm rounded-lg shadow-2xl" />
             <div>
               <h1 className="text-5xl font-bold"> Books to freshen up <br/>
         your bookshelf</h1>

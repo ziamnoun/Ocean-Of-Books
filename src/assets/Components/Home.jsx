@@ -9,7 +9,7 @@ const Home = () => {
 
 
     useEffect(()=>{
-        fetch("public/fakeDataOfBooks.json")
+        fetch("/fakeDataOfBooks.json")
         .then(res=>res.json())
         .then(data=>{
             setBooklist(data);
