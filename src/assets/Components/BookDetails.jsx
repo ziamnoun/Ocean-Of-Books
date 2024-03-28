@@ -21,12 +21,19 @@ const BookDetails = () => {
     const [isRead,setIsRead]=useState(false)
 
     const handleButton=()=>{
-      storeBook(idInt)
-      setIsRead(true)
+      // storeBook(idInt)
+      // setIsRead(true)
       
 
 
-      toast.success("Add to Read Books.");
+      // toast.success("Add to Read Books.");
+      if (isRead) {
+        toast.error("Already added to read books");
+      } else {
+        storeBook(idInt);
+        setIsRead(true);
+        toast.success("Added to Read Books.");
+      }
      
 
 

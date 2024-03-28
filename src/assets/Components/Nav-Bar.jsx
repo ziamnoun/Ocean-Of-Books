@@ -7,6 +7,8 @@ const links=<>
  <li><NavLink to='/' className={({isActive})=> isActive?  'border-solid border-2 border-green-500 text-green-500 bg-white' :'text-black'}>Home</NavLink></li>
  <li><NavLink to='/ListedBooks' className={({isActive})=> isActive?  'border-solid border-2 border-green-500 text-green-500 bg-white' :'text-black'}>Listed Books</NavLink></li>
  <li><NavLink to='/PageToRead' className={({isActive})=> isActive?  ' border-solid border-2 border-green-500 text-green-500 bg-white' :'text-black'}>Page to Read</NavLink></li>
+ <li><NavLink to='/About' className={({isActive})=> isActive?  ' border-solid border-2 border-green-500 text-green-500 bg-white' :'text-black'}>About</NavLink></li>
+ <li><NavLink to='/Contact' className={({isActive})=> isActive?  ' border-solid border-2 border-green-500 text-green-500 bg-white' :'text-black'}>Contact</NavLink></li>
 
 </>
 
@@ -25,7 +27,7 @@ const links=<>
     <a className="btn btn-ghost lg:text-3xl font-extrabold lg:ml-10">Book Vibe</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1 gap-4 text-xl">
+    <ul className="menu menu-horizontal px-1 gap-2 text-xl">
     {links}
     </ul>
   </div>
